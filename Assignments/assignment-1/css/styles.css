@@ -1,6 +1,9 @@
 * {
   box-sizing: border-box;
 }
+body {
+	padding: 5px;
+}
 .row{
 	width: 100%;
 }
@@ -8,6 +11,7 @@
 	.col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12
 	{
 		float: left;
+		padding: 5px;
 	}
 	.col-lg-1 {
 		width: 8.33%;
@@ -47,10 +51,11 @@
 	}
 }
 
-@media (min-width: 768px and max-width: 991px){
+@media (min-width: 768px) and (max-width: 991px){
 	.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12
 	{
 		float: left;
+		padding: 5px;
 	}
 	.col-md-1 {
 		width: 8.33%;
@@ -93,6 +98,7 @@
 	.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12
 	{
 		float: left;
+		padding: 5px;
 	}
 	.col-sm-1 {
 		width: 8.33%;
@@ -130,4 +136,57 @@
 	.col-sm-12 {
 		width: 100%;
 	}
+}
+@font-face {
+  font-family: myfont;
+  src: url(./Uniflex_PersonalUseOnly.ttf);
+}
+h1 {
+	font-family: myfont, sans-serif;
+	text-align: center;
+	color: #515151;
+	font-weight: 300;
+	font-size: 3em;
+}
+.box {
+		background-color: #c9c9c9;
+		padding: 0px;
+		border-width: 2px;
+		border-style: solid;
+}
+.b1 {
+		border-color: red;
+}
+.b2 {
+		border-color: green;
+}
+.b3 {
+		border-color: blue;
+}
+.title {
+	width: 40%;
+	font-family: myfont, sans-serif;
+	font-size: 2em;
+	color: white;
+	margin:0px;
+	border-width: 2px;
+	border-style: solid;
+	padding: 10px;
+}
+.t1 {
+	background-color: red;
+	border-color: red;
+}
+.t2 {
+	background-color: green;
+	border-color: green;
+}
+.t3 {
+	background-color: blue;
+	border-color: blue;
+}
+.content {
+	margin: 10px;
+	font-family: sans-serif;
+	font-size: em;
 }
