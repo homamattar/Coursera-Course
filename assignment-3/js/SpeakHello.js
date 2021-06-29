@@ -1,31 +1,49 @@
-(function (window) {
-  var speakWord = "Hello";
-  var helloSpeaker = {
-    function (name) {
-      console.log(speakWord + " " + name);
+// Global Variables to use.
+var destFolder, sourceFolder, files, fileType, sourceDoc, svgSaveOpts, doc, layers;
+
+// The folder where all of the Illustrator files are.
+sourceFolder = Folder.selectDialog( 'Select the folder with Illustrator files you want to convert to SVG', '~' );
+
+// Function that sets up the exporting process
+function init(){
+
+  // Check to see if sourceFolder has any files in it
+  if(sourceFolder != null){
+    
+    // Create new array for files to be stored
+    files =  new Array();
+
+    // Only use file types that are illustrator files
+    fileType = "*.ai";
+
+    // Files get save with all of the files in the sourceFolder
+    files = sourceFolder.getFiles(fileType);
+
+    // Check to see if there are any files in the folder
+    if(files.length > 0){
+
+      // Ask for a destination folder
+      destFolder = Folder.selectDialog('Select the folder you want to export files to', '~');
+
+      // Loop through files
+      for(var i = 0; i < files.length; i++){
+
+        // Save the open file and properties to sourceDoc
+        sourceDoc = app.open(files[i])
+
+        doc = app.activeDocument;
+
+        hideAllLayers();
+        exportLayers();
+        sourceDoc.close(SaveOptions.DONOTSAVECHANGES);
+      }
+    } else {
+      alert('There is nothing here')
     }
-  };
-  window.helloSpeaker = helloSpeaker;
-})(window);
-// STEP 2: Wrap the entire contents of SpeakHello.js inside of an IIFE
-// See Lecture 52, part 2
 
 
-// STEP 3: Create an object, called 'helloSpeaker' to which you will attach
-// the "speak" method and which you will expose to the global context
-// See Lecture 52, part 1
+  } else {
+    alert('There are no files here')
+  }
 
-
-// DO NOT attach the speakWord variable to the 'helloSpeaker' object.
-
-
-// STEP 4: Rewrite the 'speak' function such that it is attached to the
-// helloSpeaker object instead of being a standalone function.
-// See Lecture 52, part 2
-
-
-// STEP 5: Expose the 'helloSpeaker' object to the global scope. Name it
-// 'helloSpeaker' on the global scope as well.
-// See Lecture 52, part 2
-// (Note, Step 6 will be done in the SpeakGoodBye.js file.)
-// xxxx.xxxx = helloSpeaker;
+}
